@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="navbar">
+    <span class="brand">User area</span>
+    <span class="who" th:text="'Signed in as ' + ${username}"></span>
+</div>
+
+<div class="card wide">
+    <h2>User area</h2>
+    <div class="alert success">Available to <code>ROLE_USER</code> and <code>ROLE_ADMIN</code>.</div>
+    <p class="muted">Granted authorities:
+        <span th:each="a : ${authorities}" th:text="${a}" style="margin-right:10px"></span></p>
+
+    <div class="links"><a th:href="@{/home}">Back to home</a></div>
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="danger">Sign out</button>
+    </form>
+</div>
+</body>
+</html>
